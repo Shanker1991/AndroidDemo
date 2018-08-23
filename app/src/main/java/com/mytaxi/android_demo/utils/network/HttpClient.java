@@ -9,7 +9,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.jakewharton.espresso.OkHttp3IdlingResource;
 import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.models.User;
 
@@ -38,7 +37,6 @@ public class HttpClient {
 
     public HttpClient() {
         mClient = new OkHttpClient.Builder().readTimeout(SOCKET_TIMEOUT, TimeUnit.SECONDS).build();
-        IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okhttp", mClient));
         mJsonParser = new JsonParser();
     }
 

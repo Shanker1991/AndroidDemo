@@ -10,6 +10,7 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.matcher.ViewMatchers;
 
 import com.mytaxi.android_demo.R;
+import com.mytaxi.android_demo.utils.SmartWait;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.clearText;
@@ -73,8 +74,12 @@ public class LoginService {
         }
     }
 
-    public static void checkFailedLoginMessege() {
-        getLoginErrorLabel()
-                .check(matches(isDisplayed()));
+    public static void checkFailedLoginMessage() throws Exception {
+        waitForFailedMessageDisplay();
     }
+
+    public static void waitForFailedMessageDisplay() throws Exception {
+        SmartWait.waitUntilViewDisplayed(getLoginErrorLabel());
+    }
+
 }

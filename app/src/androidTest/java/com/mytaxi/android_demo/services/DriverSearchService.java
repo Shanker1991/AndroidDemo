@@ -9,6 +9,7 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.matcher.RootMatchers;
 
 import com.mytaxi.android_demo.R;
+import com.mytaxi.android_demo.utils.SmartWait;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -61,5 +62,9 @@ public class DriverSearchService {
                 .inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().getDecorView()))))
                 .check(matches(isDisplayed()))
                 .perform(click());
+    }
+
+    public static void waitForDriverSearchActivity() throws Exception{
+        SmartWait.waitUntilViewDisplayed(getTextSearch());
     }
 }

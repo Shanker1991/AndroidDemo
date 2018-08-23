@@ -34,8 +34,9 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void sucessfulLogin() {
+    public void sucessfulLogin() throws Exception {
         LoginService.loginAs(adminUser.getUsername(), adminUser.getSalt());
+        DriverSearchService.waitForDriverSearchActivity();
         DriverSearchService.checkHeaderTitle();
         NavMenuService.goToNavigableMenu();
         NavMenuService.checkUserName(adminUser.getUsername());
@@ -43,32 +44,32 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void failedLoginWithIncorrectUsernameAndPassword() {
+    public void failedLoginWithIncorrectUsernameAndPassword() throws Exception {
         LoginService.loginAs(invalidUser.getUsername(), invalidUser.getSalt());
-        LoginService.checkFailedLoginMessege();
+        LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithBlankUsername() {
+    public void failedLoginWithBlankUsername() throws Exception{
         LoginService.loginAs("", invalidUser.getSalt());
-        LoginService.checkFailedLoginMessege();
+        LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithBlankPassword() {
+    public void failedLoginWithBlankPassword() throws Exception {
         LoginService.loginAs(adminUser.getUsername(), "");
-        LoginService.checkFailedLoginMessege();
+        LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithIncorrectUsername() {
+    public void failedLoginWithIncorrectUsername() throws Exception {
         LoginService.loginAs(invalidUser.getUsername(), adminUser.getSalt());
-        LoginService.checkFailedLoginMessege();
+        LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithIncorrectPassword() {
+    public void failedLoginWithIncorrectPassword() throws Exception {
         LoginService.loginAs(adminUser.getUsername(), invalidUser.getSalt());
-        LoginService.checkFailedLoginMessege();
+        LoginService.checkFailedLoginMessage();
     }
 }
