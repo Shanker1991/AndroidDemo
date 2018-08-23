@@ -10,7 +10,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.jakewharton.espresso.OkHttp3IdlingResource;
-import com.mytaxi.android_demo.BuildConfig;
 import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.models.User;
 
