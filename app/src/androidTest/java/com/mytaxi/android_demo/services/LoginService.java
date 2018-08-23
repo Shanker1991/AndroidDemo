@@ -74,11 +74,11 @@ public class LoginService {
         }
     }
 
-    public static void checkFailedLoginMessage() throws Exception {
+    public static void checkFailedLoginMessage() {
         waitForFailedMessageDisplay();
     }
 
-    public static void waitForFailedMessageDisplay() throws Exception {
+    public static void waitForFailedMessageDisplay() {
         SmartWait.waitUntilViewDisplayed(getLoginErrorLabel());
     }
 

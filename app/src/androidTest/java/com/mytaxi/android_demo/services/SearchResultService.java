@@ -60,7 +60,7 @@ public class SearchResultService {
 
     }
 
-    public static void checkDriverDetails(String name, String date, String location) throws Exception{
+    public static void checkDriverDetails(String name, String date, String location) {
         waitForDriverResultActivity();
         checkDriverDate(date);
         checkDriverName(name);
@@ -98,7 +98,7 @@ public class SearchResultService {
         activity.startActivity(intent);
     }
 
-    public static void waitForDriverResultActivity() throws Exception {
+    public static void waitForDriverResultActivity(){
         SmartWait.waitUntilViewDisplayed(getDriverNameField());
     }
 }

@@ -64,7 +64,7 @@ public class DriverSearchService {
                 .perform(click());
     }
 
-    public static void waitForDriverSearchActivity() throws Exception{
+    public static void waitForDriverSearchActivity(){
         SmartWait.waitUntilViewDisplayed(getTextSearch());
     }
 }

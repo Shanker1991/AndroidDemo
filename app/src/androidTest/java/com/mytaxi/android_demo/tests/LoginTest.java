@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void sucessfulLogin() throws Exception {
+    public void sucessfulLogin() {
         LoginService.loginAs(adminUser.getUsername(), adminUser.getSalt());
         DriverSearchService.waitForDriverSearchActivity();
         DriverSearchService.checkHeaderTitle();
@@ -44,31 +44,31 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void failedLoginWithIncorrectUsernameAndPassword() throws Exception {
+    public void failedLoginWithIncorrectUsernameAndPassword() {
         LoginService.loginAs(invalidUser.getUsername(), invalidUser.getSalt());
         LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithBlankUsername() throws Exception{
+    public void failedLoginWithBlankUsername() {
         LoginService.loginAs("", invalidUser.getSalt());
         LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithBlankPassword() throws Exception {
+    public void failedLoginWithBlankPassword() {
         LoginService.loginAs(adminUser.getUsername(), "");
         LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithIncorrectUsername() throws Exception {
+    public void failedLoginWithIncorrectUsername() {
         LoginService.loginAs(invalidUser.getUsername(), adminUser.getSalt());
         LoginService.checkFailedLoginMessage();
     }
 
     @Test
-    public void failedLoginWithIncorrectPassword() throws Exception {
+    public void failedLoginWithIncorrectPassword() {
         LoginService.loginAs(adminUser.getUsername(), invalidUser.getSalt());
         LoginService.checkFailedLoginMessage();
     }

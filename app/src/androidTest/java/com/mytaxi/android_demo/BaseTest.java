@@ -5,6 +5,7 @@ import android.os.Build;
 
 import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.models.User;
+import com.mytaxi.android_demo.utils.SmartWait;
 
 import android.content.pm.PackageManager;
 
@@ -49,7 +50,7 @@ public class BaseTest {
     protected static void allowPermissionsIfNeeded() {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(PERMISSION_MESSAGE)) {
-                sleep(PERMISSIONS_DIALOG_DELAY);
+                SmartWait.sleep(PERMISSIONS_DIALOG_DELAY);
                 UiDevice device = UiDevice.getInstance(getInstrumentation());
                 UiObject allowPermissions = device.findObject(new UiSelector()
                         .clickable(true)
@@ -68,13 +69,5 @@ public class BaseTest {
         Context context = InstrumentationRegistry.getTargetContext();
         int permissionStatus = ContextCompat.checkSelfPermission(context, permissionNeeded);
         return permissionStatus == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private static void sleep(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Cannot execute Thread.sleep()");
-        }
     }
 }

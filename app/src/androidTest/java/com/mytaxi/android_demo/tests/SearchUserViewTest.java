@@ -24,7 +24,7 @@ public class SearchUserViewTest extends BaseTest {
             new ActivityTestRule<>(MainActivity.class);
 
     @Before
-    public void setup() throws Exception {
+    public void setup() {
         allowPermissionsIfNeeded();
         if (!LoginService.isLoginActivity()) {
             NavMenuService.logout();
@@ -45,7 +45,7 @@ public class SearchUserViewTest extends BaseTest {
     }
 
     @Test
-    public void searchDriverResult() throws Exception {
+    public void searchDriverResult() {
         DriverSearchService.searchWith(searchKey.sa.name());
         DriverSearchService.selectUserFromAutoComplete(driver.getName(), mActivityRule.getActivity());
         SearchResultService.checkDriverDetails(driver.getName(), dateFormat.format(driver.getRegisteredDate()), driver.getLocation());
@@ -54,7 +54,7 @@ public class SearchUserViewTest extends BaseTest {
     }
 
     @Test
-    public void callDriver() throws Exception {
+    public void callDriver() {
         DriverSearchService.searchWith(searchKey.sa.name());
         DriverSearchService.selectUserFromAutoComplete(driver.getName(), mActivityRule.getActivity());
         SearchResultService.checkDriverDetails(driver.getName(), dateFormat.format(driver.getRegisteredDate()), driver.getLocation());
