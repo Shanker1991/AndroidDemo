@@ -1,20 +1,15 @@
 package com.mytaxi.android_demo;
 
-import android.content.Context;
 import android.os.Build;
 
 import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.models.User;
 import com.mytaxi.android_demo.utils.SmartWait;
 
-import android.content.pm.PackageManager;
-
-import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
-import android.support.v4.content.ContextCompat;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 
@@ -30,8 +25,7 @@ public class BaseTest {
     protected static final String strDateFormat = "yyyy-MM-dd";
 
     private static final int PERMISSIONS_DIALOG_DELAY = 3000;
-    private static final int GRANT_BUTTON_INDEX = 1;
-    protected static final String PERMISSION_MESSAGE = "Allow mytaxi demo to access this device's location?";
+    private static final String ALLOW_PERMISSION = "ALLOW";
 
     protected static enum searchKey {
         sa,
@@ -53,7 +47,7 @@ public class BaseTest {
                 SmartWait.sleep(PERMISSIONS_DIALOG_DELAY);
                 UiDevice device = UiDevice.getInstance(getInstrumentation());
                 UiObject allowPermissions = device.findObject(new UiSelector()
-                        .text("ALLOW")
+                        .text(ALLOW_PERMISSION)
                         .clickable(true)
                         .checkable(false));
 
