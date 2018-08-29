@@ -49,13 +49,14 @@ public class BaseTest {
 
     protected static void allowPermissionsIfNeeded() {
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasNeededPermission(PERMISSION_MESSAGE)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 SmartWait.sleep(PERMISSIONS_DIALOG_DELAY);
                 UiDevice device = UiDevice.getInstance(getInstrumentation());
                 UiObject allowPermissions = device.findObject(new UiSelector()
+                        .text("ALLOW")
                         .clickable(true)
-                        .checkable(false)
-                        .index(GRANT_BUTTON_INDEX));
+                        .checkable(false));
+
                 if (allowPermissions.exists()) {
                     allowPermissions.click();
                 }
@@ -63,11 +64,5 @@ public class BaseTest {
         } catch (UiObjectNotFoundException e) {
             System.out.println("There is no permissions dialog to interact with");
         }
-    }
-
-    private static boolean hasNeededPermission(String permissionNeeded) {
-        Context context = InstrumentationRegistry.getTargetContext();
-        int permissionStatus = ContextCompat.checkSelfPermission(context, permissionNeeded);
-        return permissionStatus == PackageManager.PERMISSION_GRANTED;
     }
 }
